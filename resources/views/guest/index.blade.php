@@ -54,9 +54,20 @@
                                     {{ $guest->city }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('guest.edit', $guest) }}">
-                                        <x-primary-button>Edit</x-pimary-button>
-                                    </a>
+                                    <div class="flex">
+                                        <div class="mr-2">
+                                            <a href="{{ route('guest.edit', $guest) }}">
+                                                <x-primary-button>Edit</x-pimary-button>
+                                            </a>
+                                        </div>
+                                        <div class="mr-2">
+                                            <form action="{{ route('guest.destroy', $guest) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <x-danger-button onclick="return confirm('Are you sure?')">Delete</x-danger-button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
