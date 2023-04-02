@@ -35,13 +35,19 @@
                             <x-input-label for="province" :value="__('Province')" />
                             <select id="province" name="province" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autocomplete="off">
                                 <option value="" disabled selected>== Select Province ==</option>
+                                @foreach ($provinces as $province)
+                                <option value="{{ $province['nama'] }}">{{ $province['nama'] }}</option>
+                                @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('province')" class="mt-2" />
-                        </div>
-                        <div>
-                            <x-input-label for="city" :value="__('City')" />
-                            <select id="city" name="city" class="block mt-1 w-full border-gray-300 text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autocomplete="off" disabled>
-                                <option value="" disabled selected>== Select City ==</option>
+                            </div>
+                            <div>
+                                <x-input-label for="city" :value="__('City')" />
+                                <select id="city" name="city" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autocomplete="off">
+                                    <option value="" disabled selected>== Select City ==</option>
+                                    @foreach ($cities as $city)
+                                    <option value="{{ $city['nama'] }}">{{ $city['nama'] }}</option>
+                                    @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('city')" class="mt-2" />
                         </div>

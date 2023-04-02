@@ -1,9 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Index - Guest Book') }}
-        </h2>
-        <x-primary-button class="float-right">Add</x-primary-button>
+        <div class="flex justify-between">
+            <div>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ __('Index - Guest Book') }}
+                </h2>
+            </div>
+            <div>
+                <a href="{{ route('guest.create') }}">
+                    <x-primary-button class="float-right">Add</x-primary-button>
+                </a>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -40,10 +48,10 @@
                                     {{ $guest->organization }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $guest->province_code }}
+                                    {{ $guest->province }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $guest->city_code }}
+                                    {{ $guest->city }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <a href="{{ route('guest.edit', $guest) }}">

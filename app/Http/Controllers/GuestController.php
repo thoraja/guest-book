@@ -23,9 +23,11 @@ class GuestController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(AddressService $addressService)
     {
-        return view('guest.add');
+        $provinces = $addressService->getProvinces();
+        $cities = $addressService->getCities();
+        return view('guest.add', compact('provinces', 'cities'));
     }
 
     /**

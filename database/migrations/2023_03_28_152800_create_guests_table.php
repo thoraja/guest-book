@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('organization', 128);
             $table->string('address');
             $table->string('province', 64);
-            $table->string('city_code', 64);
+            $table->string('city', 64);
             $table->string('phone', 32);
             $table->timestamps();
         });
