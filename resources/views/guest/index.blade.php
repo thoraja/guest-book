@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Index - Guest Book') }}
         </h2>
+        <x-primary-button class="float-right">Add</x-primary-button>
     </x-slot>
 
     <div class="py-12">

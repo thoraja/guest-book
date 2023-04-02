@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AddressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::prefix('province')->name('api.province.')->group(function () {
+    Route::get('', [AddressController::class, 'getProvinces'])->name('index');
+    Route::get('{province}', [AddressController::class, 'getProvince'])->name('show');
+    Route::get('{province}/city', [AddressController::class, 'getCities'])->name('city');
 });
