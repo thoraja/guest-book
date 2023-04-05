@@ -22,4 +22,9 @@ class AddressController extends Controller
     {
         return $addressService->getCities($province);
     }
+
+    public function getAllCities(AddressService $addressService)
+    {
+        return $addressService->getCities();
+    }
 }

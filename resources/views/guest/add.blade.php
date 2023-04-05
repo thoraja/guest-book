@@ -13,22 +13,22 @@
                         @csrf
                         <div>
                             <x-input-label for="firstname" :value="__('First Name')" />
-                            <x-text-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="firstname" />
+                            <x-text-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="@$guest->firstname ?? old('firstname')" required autofocus autocomplete="firstname" />
                             <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
                         </div>
                         <div>
                             <x-input-label for="lastname" :value="__('Last Name')" />
-                            <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autocomplete="lastname" />
+                            <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="@$guest->lastname ?? old('lastname')" required autocomplete="lastname" />
                             <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
                         </div>
                         <div>
                             <x-input-label for="organization" :value="__('Organization')" />
-                            <x-text-input id="organization" class="block mt-1 w-full" type="text" name="organization" :value="old('firstname')" required autocomplete="firstname" />
+                            <x-text-input id="organization" class="block mt-1 w-full" type="text" name="organization" :value="@$guest->organization ?? old('firstname')" required autocomplete="firstname" />
                             <x-input-error :messages="$errors->get('organization')" class="mt-2" />
                         </div>
                         <div>
                             <x-input-label for="address" :value="__('Address')" />
-                            <x-text-area id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address"></x-text-area>
+                            <x-text-area id="address" class="block mt-1 w-full" type="text" name="address" required autocomplete="address">{{ @$guest->address ?? old('address') }}</x-text-area>
                             <x-input-error :messages="$errors->get('address')" class="mt-2" />
                         </div>
                         <div>
@@ -36,7 +36,7 @@
                             <select id="province" name="province" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autocomplete="off">
                                 <option value="" disabled selected>== Select Province ==</option>
                                 @foreach ($provinces as $province)
-                                <option value="{{ $province['nama'] }}">{{ $province['nama'] }}</option>
+                                <option value="{{ $province['nama'] }}" {{ @$guest->province != $province['nama'] ?: 'selected' }}>{{ $province['nama'] }}</option>
                                 @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('province')" class="mt-2" />
@@ -46,14 +46,14 @@
                                 <select id="city" name="city" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autocomplete="off">
                                     <option value="" disabled selected>== Select City ==</option>
                                     @foreach ($cities as $city)
-                                    <option value="{{ $city['nama'] }}">{{ $city['nama'] }}</option>
+                                    <option value="{{ $city['nama'] }}" {{ @$guest->city != $city['nama'] ?: 'selected' }}>{{ $city['nama'] }}</option>
                                     @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('city')" class="mt-2" />
                         </div>
                         <div>
                             <x-input-label for="phone" :value="__('Phone')" />
-                            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" />
+                            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="@$guest->phone ?? old('phone')" required autocomplete="phone" />
                             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                         </div>
                         <div class="pt-6">

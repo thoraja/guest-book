@@ -50,9 +50,11 @@ class GuestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Guest $guest)
+    public function edit(Guest $guest, AddressService $addressService)
     {
-        //
+        $provinces = $addressService->getProvinces();
+        $cities = $addressService->getCities();
+        return view('guest.add', compact('provinces', 'cities', 'guest'));
     }
 
     /**

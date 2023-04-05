@@ -23,3 +23,4 @@ Route::prefix('province')->name('api.province.')->group(function () {
     Route::get('{province}', [AddressController::class, 'getProvince'])->name('show');
     Route::get('{province}/city', [AddressController::class, 'getCities'])->name('city');
 });
+Route::get('city', [AddressController::class, 'getAllCities'])->name('city');
