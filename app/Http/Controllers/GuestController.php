@@ -62,7 +62,8 @@ class GuestController extends Controller
      */
     public function update(UpdateGuestRequest $request, Guest $guest)
     {
-        //
+        $guest->update($request->validated());
+        return redirect()->route('guest.index');
     }
 
     /**

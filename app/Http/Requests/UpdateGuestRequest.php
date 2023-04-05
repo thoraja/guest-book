@@ -11,7 +11,7 @@ class UpdateGuestRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class UpdateGuestRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+            'organization' => ['required'],
+            'address' => ['required'],
+            'province' => ['required'],
+            'city' => ['required'],
+            'phone' => ['required'],
         ];
     }
 }

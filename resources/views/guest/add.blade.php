@@ -9,7 +9,10 @@
         <div class="w-full mx-auto sm:max-w-xl px-2 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <form action="{{ route('guest.store') }}" method="POST">
+                    <form action="{{ @$guest ? route('guest.update', $guest) : route('guest.store') }}" method="POST">
+                        @if ($guest)
+                        @method('PATCH')
+                        @endif
                         @csrf
                         <div>
                             <x-input-label for="firstname" :value="__('First Name')" />
