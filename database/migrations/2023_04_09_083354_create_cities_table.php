@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->string('code')->unique();
+            $table->string('province_code', 2);
+            $table->string('code', 4)->unique();
             $table->string('name');
+
+            $table->foreign('province_code')->references('code')->on('provinces');
         });
     }
 

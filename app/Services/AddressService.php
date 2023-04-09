@@ -9,7 +9,7 @@ class AddressService
 {
     public function getProvinces()
     {
-        $provinces = Province::with('cities')->get();
+        $provinces = Province::get();
         return $provinces;
     }
 

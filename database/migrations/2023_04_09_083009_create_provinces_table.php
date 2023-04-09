@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('provinces', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->string('code')->unique();
-            $table->string('name');
+            $table->string('code', 2)->unique();
+            $table->string('name', 64);
         });
     }
 
