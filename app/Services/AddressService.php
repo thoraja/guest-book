@@ -2,13 +2,14 @@
 
 namespace App\Services;
 
+use App\Models\Province;
 use Illuminate\Support\Facades\Http;
 
 class AddressService
 {
     public function getProvinces()
     {
-        $provinces = Http::get('https://d.kapanlaginetwork.com/banner/test/province.json')->collect();
+        $provinces = Province::with('cities')->get();
         return $provinces;
     }
 
